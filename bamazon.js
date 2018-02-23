@@ -27,7 +27,7 @@ function initialize() {
         colWidths: [10, 40, 10]
     });
     //select all data from proucts table
-    connection.query("SELECT * FROM products", function (err, results) {
+    connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
         //logs info necessary for customer
         console.log("Check out the items we have for sale!");
@@ -36,7 +36,7 @@ function initialize() {
             var prodId = res[i].item_id;
         }
 
-    connection.query(SELECt)
+    connection.query(SELECT)
 }
 
 
