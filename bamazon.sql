@@ -59,10 +59,10 @@ CREATE TABLE products (
     VALUES  ('Outdoor Furniture','100.00', '0.00');
 
     INSERT INTO departments (department_name, over_head_costs, total_sales)
-    VALUES  ('Toys','150.00', '0.00'),
+    VALUES  ('Toys','150.00', '0.00');
 
     INSERT INTO departments (department_name, over_head_costs, total_sales)
-    VALUES  ('Books','80.00', '0.00'),
+    VALUES  ('Books','80.00', '0.00');
 
     INSERT INTO departments (department_name, over_head_costs, total_sales)
     VALUES  ('Music','30.00', '0.00');
