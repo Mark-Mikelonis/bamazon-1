@@ -5,10 +5,10 @@ var Table = require ("cli-table")
 //database connection info
 var connection = mysql.createConnection({
     host: "localhost",
-    port: 3306
+    port: 3306,
     user: "root",
     password: "",
-    database: "Bamazon"
+    database: "bamazon_db"
 });
 //establish connection with database
 connection.connect(function(err) {
