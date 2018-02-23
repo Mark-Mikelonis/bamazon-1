@@ -13,7 +13,7 @@ CREATE TABLE products (
     PRIMARY KEY (item_id)
 );
 
-    INSERT INTO products (product_name,department_name,price,stock_quantity, product_sales)
+    INSERT INTO products (product_name, department_name, price, stock_quantity, product_sales)
     VALUES  ('Baseball bat', 'Sporting Goods','149.99','11', '0.00'),
             ('Gazebo', 'Outdoor Furniture','210.99','18', '0.00'),
             ('Glory Beenie Baby', 'Toys','9.99','17', '0.00'),
