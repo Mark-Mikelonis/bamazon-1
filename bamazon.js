@@ -1,19 +1,50 @@
 //require mysql and inquirer
-var mysql = require('mysql');
-var inquirer = require('inquirer');
-require('console.table');
-
+var mysql = require("mysql");
+var inquirer = require("inquirer");
+var Table = require ("cli-table")
+//database connection info
 var connection = mysql.createConnection({
-    host: "127.0.0.1",
-    port: 306,
+    host: "localhost",
+    port: 3306
     user: "root",
     password: "",
     database: "Bamazon"
-})
-
+});
+//establish connection with database
 connection.connect(function(err) {
     if (err) throw err;
+});
 
+//initializes app
+initialize();
+
+//functions//
+
+function initialize() {
+    //create new table
+    var productTable =  new Table ({
+        head: ["Product Id", "Product Name", "Price"],
+        colWidths: [10, 40, 10]
+    });
+    //select all data from proucts table
+    connection.query("SELECT * FROM products", function (err, results) {
+        if (err) throw err;
+        //logs info necessary for customer
+        console.log("Check out the items we have for sale!");
+        //variables to store column data
+        for (var i = 0; i < res.length; i++) {
+            var prodId = res[i].item_id;
+        }
+
+    connection.query(SELECt)
+}
+
+
+
+
+var table = new Table({
+    head:['Item ID', 'Product Name','Department','Price','Available Stock'],
+    colWidths: [10,40,20,15,20]
 });
 
 var quantity;
