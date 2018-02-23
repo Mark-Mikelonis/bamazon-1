@@ -34,90 +34,86 @@ function initialize() {
         //variables to store column data
         for (var i = 0; i < res.length; i++) {
             var prodId = res[i].item_id;
-        }
+            var prodName = res[i].product_name;
 
-    connection.query(SELECt)
-}
-
-
-
-
-var table = new Table({
-    head:['Item ID', 'Product Name','Department','Price','Available Stock'],
-    colWidths: [10,40,20,15,20]
-});
-
-var quantity;
-
-connection.query("SELECT * FROM products", function(err, results) {
-  console.log('');
-  console.table(results);
-  start();  
-});
-
-var start = function () {
-
-    inquirer.prompt ([
-        {
-            type: 'input',
-            name: 'selection',
-            message: 'Type the number that matches the product you want.',
-            validate: function(value) {
-                if (isNaN(value) === false) {
-                    return true;
-                } else {
-                    return false;
-                }
+            for (var i = 0; i < res.length; i++) {
+                // variables to store column data
+                var prodId = res[i].item_id;
+                var prodName = res[i].product_name;
+                var price = res[i].price;
+                // push column data into table for each product
+                productTable.push(
+                    [prodId, prodName, price]
+                );
             }
-        },
-        {
-            type: 'input',
-            name: 'quantity',
-            message: 'How many would you like to order?',
-            validate: function(value) {
-
-                if (isNan(value) === false){
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-    ]).then(function (answers) {
-        var item = answers.selection;
-        quantity = parseInt(answers.quantity);
-
-        var item = answers.selection;
-        quantity - parseInt(answers.quantity);
-
-        var userSelection = availability(item);
+            // print table to console
+            console.log(productTable.toString());
+            // runs function to purchase items
+            buyProduct();
     });
 }
-
-function availability(item) {
-    //check amount of stock v amount ordered
-    connection.query('SELECT * FROM products WHERE id =?', item, function(err, results) {
-        if (err) throw err;
-
-        if(quantity > results[0].stock) {
-        console.log("Sorry, your order exceeds are stock amount.");
-        start();
-        } else {
-            connection.query('UPDATE products SET ? WHERE ?',
-            [
-                {
-                    stock: results[0].stock - quantity
-                },
-                {
-                    id: item
-                }
-            ]
-        );
-        console.log('Congratulations, you purchased a ' + results[0].product);
-        console.log('Your order total is: ' + parseFloat(quantity * results[0].price));
-        start();
-
-    }
-
-    })
+// function to purchase items
+function buyProduct() {
+    // prompts user for id and quantity of product they want to purchase
+    inquirer.prompt([{
+        name: "product_id",
+        message: "Enter the ID of the product you'd like to buy."
+    }, {
+        name: "quantity",
+        message: "How many of the product you selected would you like to buy?"
+    }]).then(function (answers) {
+        // selects quantity of item user specified in prompt above
+        connection.query("SELECT stock_quantity FROM products WHERE item_id = ?", [answers.product_id], function (err, res) {
+            // there is not enough in stock to fulfill purchase
+            if (answers.quantity > res[0].stock_quantity) {
+                console.log("Insufficient quantity!");
+                // restarts function to buy items
+                buyProduct();
+            } else {
+                // there is enough in stock to fulfill purchase
+                var newQty = res[0].stock_quantity - answers.quantity;
+                // select info from products about product specified by user
+                connection.query("SELECT * FROM products WHERE item_id = ?", [answers.product_id], function (err, res) {
+                    // set product, price, and sales equal to variables
+                    var prodSelected = res[0].product_name;
+                    var price = res[0].price;
+                    var prodSales = parseFloat(res[0].product_sales);
+                    var department = res[0].department_name;
+                    // total price is price of 1 item * quantity purchased
+                    var total = parseFloat(price * answers.quantity);
+                    // new product sales figure is old product sales plus new sales
+                    var newProdSales = prodSales + total;
+                    //update departments table with new product sales
+                    connection.query("SELECT total_sales FROM departments WHERE department_name = ?", [department], function (err, res) {
+                        // represents previous department sales
+                        var dptSales = parseFloat(res[0].total_sales);
+                        // adds new sale to previous department sales
+                        var newDptSales = dptSales + total;
+                        // updates total sales
+                        connection.query("UPDATE departments SET ? WHERE ?", [{
+                            total_sales: newDptSales
+                        }, {
+                            department_name: department
+                        }], function (err, res) {
+                            if (err) throw err;
+                        });
+                    });
+                    // update product table with new quantity and product sales
+                    connection.query("UPDATE products SET ? WHERE ?", [{
+                        stock_quantity: newQty,
+                        product_sales: newProdSales
+                    }, {
+                        item_id: answers.product_id
+                    }], function (err, res) {
+                        if (err) throw err;
+                        // let user know of their success in purchasing their items
+                        console.log("\nSuccess, you've purchased " + answers.quantity + " of " + prodSelected + " for the price of $" + total + ".\n");
+                        // restarts function to buy items
+                        initialize();
+                    });
+                });
+            }
+        });
+    });
 }
+        
