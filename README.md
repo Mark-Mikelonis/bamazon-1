@@ -28,5 +28,27 @@ To run the customer side of this interface in your terminal type:
 
 ![alt text](https://github.com/holytoledo36/bamazon/blob/master/images/ordercompleted.png)
 
++ Other features of note: If you ask for a quantity higher than the available quantity, you will be unable to make the purchase at the time.
+
+### Manager Experience
+
+To run the manager side of this interface in your terminal type:
+
+#### node bamazonManager.js
+
+The Manager Side gives you four options:
+ + View Products For Sale
+ ![alt text](https://github.com/holytoledo36/bamazon/blob/master/images/manager-productsforsale.png)
+ + View Low Inventory -- Which shows you which items have less than 5 quantity available
+ ![alt text](https://github.com/holytoledo36/bamazon/blob/master/images/manager-lowinventory.png)
+
+ + Add To Inventory
+ 
+ ![alt text](https://github.com/holytoledo36/bamazon/blob/master/images/manager-addtoinventory.png)
+
+ + Add New Product
+  ![alt text](https://github.com/holytoledo36/bamazon/blob/master/images/manager-addnewproduct.png)
+
+
 
 
