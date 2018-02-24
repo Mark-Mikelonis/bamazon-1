@@ -128,7 +128,7 @@ function selectionPrompt() {
                 } else {
                     //list item information for user for confirm prompt
                     console.log("===================================");
-                    console.log("Good News! We can fulfull your order.");
+                    console.log("Good News! We can fulfill your order.");
                     console.log("===================================");
                     console.log("You've selected:");
                     console.log("----------------");
