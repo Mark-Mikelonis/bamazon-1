@@ -24,4 +24,3 @@ VALUES  ("Baseball bat", "Sporting Goods", "149.99", 11),
         ("Macbook Pro", "Electronics", "1999.99", 22),
         ("James Patterson: Alex", "Books","19.99", 35),
         ("Garth Brooks Greatest Hits", "Music","49.99", 19);
-        ("Iphone 10", "Electronics", "999.99", 10)
