@@ -133,7 +133,7 @@ function addInventory() {
 
         type: "input",
         name: "inputId",
-        message: "Please enter the ID number of the item you would like to add inventory to.",
+        message: "Please enter the ID number of the item you would like to add inventory to:",
     },
     {
         type: "input",
@@ -165,22 +165,22 @@ function addProduct() {
 
         type: "input",
         name: "inputName",
-        message: "Please enter the item name of the new product.",
+        message: "Please enter the item name of the new product:",
     },
     {
         type: "input",
         name: "inputDepartment",
-        message: "Please enter which department name of which the new product belongs.",
+        message: "Please enter which department name of which the new product belongs:",
     },
     {
         type: "input",
         name: "inputPrice",
-        message: "Please enter the price of the new product (0.00).",
+        message: "Please enter the price of the new product (0.00):",
     },
     {
         type: "input",
         name: "inputStock",
-        message: "Please enter the stock quantity of the new product.",
+        message: "Please enter the stock quantity of the new product:",
     }
 
     ]).then(function (managerNew) {
