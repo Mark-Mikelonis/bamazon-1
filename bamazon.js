@@ -57,7 +57,7 @@ function buyProduct() {
         message: "How many of the products you selected would you like to buy?"
 
     }]).then(function(answers) {
-        connsection.query("SELECT stock_quantity FROM products WHERE item_id = ?", [answers.product_id], function(err, res) {
+        connection.query("SELECT stock_quantity FROM products WHERE item_id = ?", [answers.product_id], function(err, res) {
             if (answers.quantity > res[0].stock_quantity) {
                 console.log("Insufficient quantity!");
                 buyProduct();
@@ -77,7 +77,8 @@ function buyProduct() {
                         connection.query("UPDATE departments SET ? WHERE ?", [{
                             total_sales: newOptSales
                         }, {
-                            department_name: department
+                            department_name: departments
+
                         }], function(err, res) {
                             if (err) throw err;
                         });

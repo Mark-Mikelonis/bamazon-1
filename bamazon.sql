@@ -45,36 +45,38 @@ CREATE TABLE products (
 
             SELECT * FROM products
 
+    DROP TABLE IF EXISTS departments        
+
     CREATE TABLE departments (
-        department_id INTEGER (10) AUTO_INCREMENT NOT NULL,
+        department_id INTEGER AUTO_INCREMENT NOT NULL,
         department_name VARCHAR (100) NOT NULL,
         over_head_costs DECIMAL (10,2),
         PRIMARY KEY (department_id)    
     );
 
-    INSERT INTO departments (department_name, over_head_costs, total_sales)
-    VALUES  ('Sporting Goods','80.00', '0.00');
+    INSERT INTO departments (department_name, over_head_costs)
+    VALUES  ('Sporting Goods','80.00');
 
-    INSERT INTO departments (department_name, over_head_costs, total_sales)
-    VALUES  ('Outdoor Furniture','100.00', '0.00');
+    INSERT INTO departments (department_name, over_head_costs)
+    VALUES  ('Outdoor Furniture','100.00');
 
-    INSERT INTO departments (department_name, over_head_costs, total_sales)
-    VALUES  ('Toys','150.00', '0.00');
+    INSERT INTO departments (department_name, over_head_costs)
+    VALUES  ('Toys','150.00');
 
-    INSERT INTO departments (department_name, over_head_costs, total_sales)
-    VALUES  ('Books','80.00', '0.00');
+    INSERT INTO departments (department_name, over_head_costs)
+    VALUES  ('Books','80.00');
 
-    INSERT INTO departments (department_name, over_head_costs, total_sales)
-    VALUES  ('Music','30.00', '0.00');
+    INSERT INTO departments (department_name, over_head_costs)
+    VALUES  ('Music','30.00');
 
-    INSERT INTO departments (department_name, over_head_costs, total_sales)
-    VALUES ('Electronics','145.00', '0.00');
+    INSERT INTO departments (department_name, over_head_costs)
+    VALUES ('Electronics','145.00');
 
-    INSERT INTO departments (department_name, over_head_costs, total_sales)
-    VALUES ('Bedroom','95.00', '0.00');
+    INSERT INTO departments (department_name, over_head_costs)
+    VALUES ('Bedroom','95.00');
 
-    INSERT INTO departments (department_name, over_head_costs, total_sales)
-    VALUES ('Food','75.00', '0.00');
+    INSERT INTO departments (department_name, over_head_costs)
+    VALUES ('Food','75.00');
 
     SELECT * FROM departments
 
