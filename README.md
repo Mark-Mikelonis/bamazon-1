@@ -21,7 +21,7 @@ To run the customer side of this interface in your terminal type:
 
 + Responding "Yes" will give you a list of the inventory. And a series of questions will be asked of you to see what you want to purchase?"
  
-![alt text](https://github.com/holytoledo36/bamazon/blob/master/images/currentinventory.png)
+![alt text](https://github.com/holytoledo36/bamazon/blob/master/images/currentinventory2.png)
 
 
 + After you decide what you want and the quantity, as long as there is enough available, you will be given a receipt with total price. Once confirmed you will be thanked for the purchase.
