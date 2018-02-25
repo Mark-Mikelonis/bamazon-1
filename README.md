@@ -38,7 +38,7 @@ To run the manager side of this interface in your terminal type:
 
 The Manager Side gives you four options:
  + View Products For Sale
- ![alt text](https://github.com/holytoledo36/bamazon/blob/master/images/manager-productsforsale.png)
+ ![alt text](https://github.com/holytoledo36/bamazon/blob/master/images/manager-productsforsale2.png)
  + View Low Inventory -- Which shows you which items have less than 5 quantity available
  ![alt text](https://github.com/holytoledo36/bamazon/blob/master/images/manager-lowinventory.png)
 
